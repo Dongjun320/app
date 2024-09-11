@@ -1,8 +1,9 @@
-import 'dart:math';
+import 'dart:convert';
+
 import 'package:app/config.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-im
+import 'package:easy_extension/easy_extension.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -15,28 +16,30 @@ class _LoginScreenState extends State<LoginScreen> {
   // Note : 로그인 API 호출
   void _onFetchedApi() async {
     final loginData = {
-        'email': '',
-        'password': ''
-      };
+      'email': '202030301@daelim.ac.kr',
+      'password': '202030301'
+    };
 
-      Log.green{{
-        'status' : response.statusCode,
-        'body' : response.body,
-      }};
+    final response =
+        await http.post(Uri.parse(authUrl), body: jsonEncode(loginData));
+
+    Log.green({
+      'status': response.statusCode,
+      'body': response.body,
+    });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Center(
-          child: ElevatedButton(
-           onPressed: (){
+          child: Center(
+        child: ElevatedButton(
+            onPressed: () {
               _onFetchedApi();
-           },
-           child: const Text('Api 호출')),
-        )
-      ),
+            },
+            child: const Text('Api 호출')),
+      )),
     );
   }
 }

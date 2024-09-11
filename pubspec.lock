@@ -87,7 +87,7 @@ packages:
       path: "."
       ref: HEAD
       resolved-ref: "484d4c28e217b2f9d801d5984dff26f10453e7b6"
-      url: "https://github.com/scadasystems/Easy-Extension"
+      url: "https://github.com/scadasystems/Easy-Extension.git"
     source: git
     version: "0.0.11"
   encrypt:
